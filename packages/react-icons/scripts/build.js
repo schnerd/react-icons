@@ -129,15 +129,15 @@ async function dirInit() {
 
     await write(
       [icon.id, "index.js"],
-      "// THIS FILE IS AUTO GENERATED\nvar GenIcon = require('../lib').GenIcon\n"
+      "// THIS FILE IS AUTO GENERATED\nvar GenIcon = require('../').GenIcon\n"
     );
     await write(
       [icon.id, "index.esm.js"],
-      "// THIS FILE IS AUTO GENERATED\nimport { GenIcon } from '../lib';\n"
+      "// THIS FILE IS AUTO GENERATED\nimport { GenIcon } from '../';\n"
     );
     await write(
       [icon.id, "index.d.ts"],
-      "import { IconTree, IconType } from '../lib'\n// THIS FILE IS AUTO GENERATED\n"
+      "import { IconTree, IconType } from '../'\n// THIS FILE IS AUTO GENERATED\n"
     );
     await write(
       [icon.id, "package.json"],
@@ -229,7 +229,6 @@ async function writeIconsManifest() {
     "src/iconsManifest.d.ts",
     path.resolve(LIB, "cjs", "iconsManifest.d.ts")
   );
-  await copyFile("src/package.json", path.resolve(LIB, "package.json"));
 }
 
 async function writeLicense() {
